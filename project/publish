@@ -7,7 +7,6 @@ end
 puts "CI=#{ENV['CI']}"
 puts "TRAVIS_BRANCH=#{ENV['TRAVIS_BRANCH']}"
 puts "TRAVIS_PULL_REQUEST=#{ENV['TRAVIS_PULL_REQUEST']}"
-puts "PUBLISH=#{ENV['PUBLISH']}"
 puts "SONATYPE_USERNAME=xxxx" if ENV['SONATYPE_USERNAME']
 puts "SONATYPE_PASSWORD=xxxx" if ENV['SONATYPE_PASSWORD']
 puts "PGP_PASSPHRASE=xxxx" if ENV['PGP_PASSPHRASE']
@@ -15,11 +14,6 @@ puts
 
 unless ENV['CI'] == 'true'
   abort("ERROR: Not running on top of Travis, aborting!")
-end
-
-unless ENV['PUBLISH'] == 'true'
-  puts "Publish is disabled"
-  exit
 end
 
 branch = ENV['TRAVIS_BRANCH']
