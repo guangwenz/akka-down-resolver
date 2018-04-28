@@ -3,8 +3,6 @@ jdk:
 - oraclejdk8
 script:
 - sbt clean compile
-- sbt publishSigned
-- sbt sonatypeRelease
 scala:
 - 2.11.8
 - 2.12.4
@@ -16,3 +14,5 @@ env:
 notifications:
   email:
   - zgwmike@hotmail.com
+after_success:
+  - ./project/publish
