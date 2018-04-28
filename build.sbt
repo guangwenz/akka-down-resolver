@@ -5,7 +5,7 @@ lazy val root = (project in file(".")).
     inThisBuild(List(
       organization := "org.guangwenz",
       scalaVersion := "2.12.4",
-      version      := "0.1.0-SNAPSHOT"
+      version      := "1.0.0"
     )),
     name := "akka-down-resolver",
     libraryDependencies += akkaCluster,
