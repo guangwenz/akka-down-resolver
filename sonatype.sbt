@@ -3,7 +3,7 @@
 //  password <- Option()
 //} yield Seq(Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password))).getOrElse(Seq())
 
-pgpPassphrase := Some(System.getenv().get("PGP_PASSWORD").toCharArray)
+pgpPassphrase := Some(System.getenv().get("PGP_PASSPHRASE").toCharArray)
 credentials += Credentials("Sonatype Nexus Repository Manager",
   "oss.sonatype.org",
   System.getenv().get("SONATYPE_USERNAME"),
