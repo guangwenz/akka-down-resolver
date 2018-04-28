@@ -34,4 +34,4 @@ end
 Dir.chdir(File.absolute_path(File.join(File.dirname(__FILE__), "..")))
 
 # Go, go, go
-exec("sbt release")
+exec("sbt publishSigned sonatypeRelease")
