@@ -1,10 +1,10 @@
 credentials ++= (for {
   username <- Option(System.getenv().get("SONATYPE_USERNAME"))
   password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-} yield Seq(Credentials("Sonatype Nexus Repository Manager","oss.sonatype.org",username,password))).getOrElse(Seq())
+} yield Seq(Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password))).getOrElse(Seq())
 
 sonatypeProfileName := "org.guangwenz"
-
+pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toCharArray)
 pomExtra in Global := {
   <url>https://github.com/zgwmike/akka-down-resolver</url>
     <licenses>
