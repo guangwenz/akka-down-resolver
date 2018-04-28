@@ -11,12 +11,7 @@ lazy val root = (project in file(".")).
     libraryDependencies += akkaCluster,
     libraryDependencies ++= akkaClusterTest,
     libraryDependencies += scalaTest % Test,
-    publishTo := Some(
-      if (isSnapshot.value)
-        Opts.resolver.sonatypeSnapshots
-      else
-        Opts.resolver.sonatypeStaging
-    )
+    publishTo := sonatypePublishTo.value
   )
   .enablePlugins(MultiJvmPlugin)
   .configs(MultiJvm)

@@ -1,13 +1,10 @@
-//credentials ++= (for {
-//  username <- Option(System.getenv().get("SONATYPE_USERNAME"))
-//  password <- Option()
-//} yield Seq(Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password))).getOrElse(Seq())
+credentials ++= (for {
+  username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+  password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+} yield Seq(Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password))).getOrElse(Seq())
 
-pgpPassphrase := Some(System.getenv().get("PGP_PASSPHRASE").toCharArray)
-credentials += Credentials("Sonatype Nexus Repository Manager",
-  "oss.sonatype.org",
-  System.getenv().get("SONATYPE_USERNAME"),
-  System.getenv().get("SONATYPE_PASSWORD"))
+pgpPassphrase := (if (System.getenv().containsKey("PGP_PASSPHRASE")) Some(System.getenv().get("PGP_PASSPHRASE").toCharArray) else None)
+useGpg := false
 
 // POM settings for Sonatype
 homepage := Some(url("https://github.com/zgwmike/akka-down-resolver"))
