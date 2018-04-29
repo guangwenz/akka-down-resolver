@@ -12,7 +12,7 @@ it provides split brain resolver for static akka cluster using quorum strategy.
 add dependency to your `build.sbt`
 
 ```scala
-"org.guangwenz" %% "akka-down-resolver" % "1.0.0",
+"org.guangwenz" %% "akka-down-resolver" % "1.2.3",
 ```
 
 ## Configuration ##
