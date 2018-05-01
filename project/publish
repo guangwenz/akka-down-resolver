@@ -34,4 +34,4 @@ end
 Dir.chdir(File.absolute_path(File.join(File.dirname(__FILE__), "..")))
 
 # Go, go, go
-exec("sbt publishSigned sonatypeRelease")
+exec('sbt "++$TRAVIS_SCALA_VERSION!" publishSigned sonatypeRelease')
