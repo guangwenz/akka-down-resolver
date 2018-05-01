@@ -9,6 +9,7 @@ lazy val root = (project in file(".")).
       scalaVersion := "2.12.4",
       version := "1.2.4"
     )),
+    crossScalaVersions := Seq("2.11.12", "2.12.6"),
     name := "akka-down-resolver",
     libraryDependencies += akkaCluster,
     libraryDependencies ++= akkaClusterTest,
