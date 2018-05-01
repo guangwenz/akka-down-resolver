@@ -2,7 +2,7 @@ language: scala
 jdk:
 - oraclejdk8
 script:
-- sbt "++ $TRAVIS_SCALA_VERSION" clean compile
+- sbt ++$TRAVIS_SCALA_VERSION clean compile
 scala:
 - 2.11.12
 - 2.12.6
