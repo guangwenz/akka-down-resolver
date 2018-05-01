@@ -6,7 +6,6 @@ lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       organization := "org.guangwenz",
-      scalaVersion := "2.12.4",
       version := "1.2.4"
     )),
     crossScalaVersions := Seq("2.11.12", "2.12.6"),
