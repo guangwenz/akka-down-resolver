@@ -1,7 +1,7 @@
 Akka Split Brain Resolver
 ============
 
-[![Build Status](https://travis-ci.org/zgwmike/akka-down-resolver.svg?branch=master)](https://travis-ci.org/zgwmike/akka-down-resolver)
+[![Build Status](https://travis-ci.org/guangwenz/akka-down-resolver.svg?branch=master)](https://travis-ci.org/guangwenz/akka-down-resolver)
 
 What it is
 ----------
