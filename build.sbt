@@ -67,6 +67,7 @@ lazy val micrositeSettings = Seq(
   micrositeHomepage := "https://github.com/guangwenz/akka-down-resolver",
   micrositeGithubOwner := "guangwenz",
   micrositeGithubRepo := "akka-down-resolver",
+  micrositeBaseUrl := "akka-down-resolver",
   //  micrositeExtraMdFiles := Map(file("CONTRIBUTING.md") -> microsites.ExtraMdFileConfig("contributing.md", "contributing")),
   micrositePalette := Map(
     "brand-primary" -> "#5B5988",
