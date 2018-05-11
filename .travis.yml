@@ -1,0 +1,48 @@
+language: scala
+jdk:
+- oraclejdk8
+scala:
+- 2.11.12
+- 2.12.6
+matrix:
+  include:
+  - scala: 2.11.12
+    script: sbt ++$TRAVIS_SCALA_VERSION clean compile
+  - scala: 2.12.6
+    script: sbt "++$TRAVIS_SCALA_VERSION clean" "++$TRAVIS_SCALA_VERSION compile"
+    after_success:
+    - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+      bash scripts/publishMicrosite.sh; fi
+env:
+  global:
+  - secure: JMK+26qs4KqiI8a+JKiaYiFzBMydIaB+IP8s/X6kADsHhAHN1NpPPfLEBweP91F+95LefLJmNy6IbSsbfiPl5LgF8yo6wfhmHV8ECDrAyLDOkQZX/lafIeCjOm7b9uT5/wN5zeECiStGqdwEj3lCTrc61wyirucNeDDvDGdUATQryLcIm3KVNWb29tQeRvY8Wjl1bVl4VW8RxS9aAo4TolUkrwBylYW2TtQBztQM7s1TqYDMYRymvcynoUqUJXCOMWY0swOsXYRBr/cXHwX1YAuf4bX82XY/hhgW6Glk3H+2an2znJxQjacI9++kpQS+zmjcWHrp7DP2NdA/kn++fLeba4rTcBLYVvcwrfTmOMSSEL35WYzSCN9UPnWM90sxuBRlLBpImCjmtLG9Z5JW93vPdQrUEDjpKw083vx/ZNtpyNzWs5QobdxDQDHGVJnXD+xY+YLP7n92NKpKc4v9o5wdmZb5plJYMEIeeaDObAqpw7ug3FnPqOsD42u722oUzwRv1kMtYHI/Kqpe2xAd7pHbdp5FLLbj7ZUtGKaBMhbnGm66fAnn/C2v84OGcJHnGhvWUlyxb/Jy4EEnKDLZg9QMbLGNaWosH8BIDrF6xVYuL7cqjCqkZ8ywfDUN7qmkT0z4KYDDR3V/N66Vv71c8ilSJdfYaOtYZM/Z1V/dvi4=
+  - secure: gEaGf+ST6cMBwwBHgpiuWRe/GO5AjFsppOO87f+ZXhw2mkv2TzAOmYGvPEJRmUeXbMyA9f7bzgFh7cW6NZOc+s9CO2ejDaTtQfouO3wNa7+DkNAu5hHaAzOhivJGNGisJkqqzVXG1VWyacajiNdOw80/URN02aMLEq4YFSIa185baEWLjFi06Uc4wNlpm2K7qGb5ZeVSQg3rvR5kiUe4fUGoizJer9wv0BMsm9izRCucGhNLbF1PoWaM6NZEfQTurf8xOH0JUV9CM2m0LzUNb2AHWarsvYtl8OPokjOsh9mbX8XI+8ccfyTN1soyX2khu+dTnyT3cZtgIvWDqJKODaIYPa2ndGnCQ8Iv55wc7OwonQMEecr/n1MOCCSTXVCRdolQcKdnAzOI/3xqC37n1F3gx0Shqz7K1S9oSYG6ymVfwKdBcu1SBIvVLXhHnFe63V0qwn8+hqbO5VfLlNiwiBh/VJS2qxgwZvitmVTnKXMIg2HX3vZ0Tnu8Qqu3SCfCPMndJ52MZpgENhcYeRPUDUjKPrhFHgCEW0JPJBTCDCTkUTEWuTsJsVWeHcGw77owB7pFXBoh16mJEelpsWp+y2k2CZ0r+d1BDe73KRI2BHkDzZgqqQLAI9YB6inMJKM9DoSuxnNYBDsMJk1ODeM07D3+64IIptA2WpgOuyRByBs=
+  - secure: wB+6k6Kkq5AC/0V830ZWcMrbqnA8SF1RYttmYm0DuHBETCRVpoclr7W6hTsj1rzs+odOq5Ev7LV9TFiZKT60wrXOpTrN5r3apsuhxKWiyHyvlKNSQM9FYchtkZN6pgGMNYqsFpwJoyn+3iWFMvB1f74uR0yiNQqQB/LhSwH4VN158bTAQRwpkfYXdT2t3cLFDQZEEKnRgnmxCvn1w47z1OMlClapsE8vDqKwJNG6QFWW8Tsf/w5D6r9hAmStj8MijAja9PzEjGg55trrsVDco2Bxa8iGZnyKkdQKRo7RPE9LGQBD2n1Kjyy5h7hRhIc8shVq3538yyCciNv3/aTHMWJXXHPvIyuSofjY7VHzflirEEWOj3wP5UjwOQ/q6TQ+4wYMTbiprU2NWTA+GJ7zbRF6AuezU1oAQo+sTzsj24iNaoAv8j6cB2xGDTxgktYmdztFxWfNxnAPDoQN4YffABa2KVSsDXZeWJQF4gPoeu/kgCThKbnxkQqisNtbu/MMMKLT+UCJkKz88+2dTgrI+rZw8n6Kvcy2bpPxVvd0r//6CxS2Y92/GtHGxmceGYsyG6UxZCBnxeEGj+2XThn84whg7R7L6v5uY8L3z7Q5gHdKlw3iPDUgZAh8o8PMcgy5LdpiDtvAMl+HfF/7UlY5wc2+cwrAD6RVUW7gK0UW7wo=
+notifications:
+  email:
+  - zgwmike@hotmail.com
+after_success:
+- "./project/publish"
+cache:
+  directories:
+  - "$HOME/.sbt/0.13/dependency"
+  - "$HOME/.sbt/boot/scala*"
+  - "$HOME/.sbt/launchers"
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.nvm"
+before_cache:
+- du -h -d 1 $HOME/.ivy2/cache
+- du -h -d 2 $HOME/.sbt/
+- find $HOME/.sbt -name "*.lock" -type f -delete
+- find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
+before_install:
+- openssl aes-256-cbc -K $encrypted_2129fb3f7525_key -iv $encrypted_2129fb3f7525_iv
+  -in travis-deploy-key.enc -out travis-deploy-key -d
+- export PATH=${PATH}:./vendor/bundle
+- if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then bash
+  scripts/decrypt-keys.sh; fi
+install:
+- rvm use 2.2.5 --install --fuzzy
+- gem update --system
+- gem install sass
+- gem install jekyll -v 3.2.1
