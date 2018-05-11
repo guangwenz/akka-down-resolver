@@ -2,7 +2,7 @@ language: scala
 jdk:
 - oraclejdk8
 script:
-- sbt "++$TRAVIS_SCALA_VERSION clean compile" "++$TRAVIS_SCALA_VERSION docs/makeMicrosite"
+- sbt "++$TRAVIS_SCALA_VERSION clean" "++$TRAVIS_SCALA_VERSION compile" "++$TRAVIS_SCALA_VERSION docs/makeMicrosite"
 scala:
 - 2.11.12
 - 2.12.6
