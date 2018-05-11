@@ -10,7 +10,7 @@ matrix:
       script: sbt ++$TRAVIS_SCALA_VERSION clean compile
 
     - scala: 2.12.6
-      script: sbt "++$TRAVIS_SCALA_VERSION clean" "++$TRAVIS_SCALA_VERSION compile" "++$TRAVIS_SCALA_VERSION docs/makeMicrosite"
+      script: sbt "++$TRAVIS_SCALA_VERSION clean" "++$TRAVIS_SCALA_VERSION compile" "++$TRAVIS_SCALA_VERSION docs/publishMicrosite"
 
 env:
   global:
