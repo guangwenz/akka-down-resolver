@@ -48,5 +48,46 @@ lazy val root = (project in file(".")).
   )
   .enablePlugins(MultiJvmPlugin)
   .configs(MultiJvm)
+  .aggregate(docs)
 
 jvmOptions in MultiJvm := Seq("-Xmx256M")
+
+
+lazy val noPublishSettings = Seq(
+  publish := {},
+  publishLocal := {},
+  test := {},
+  publishArtifact := false
+)
+lazy val micrositeSettings = Seq(
+  micrositeName := "Akka Split Brain Resolver",
+  micrositeDescription := "Akka Split Brain Resolver",
+  micrositeAuthor := "Guangwen Zhou",
+  //  micrositeHighlightTheme := "atom-one-light",
+  micrositeHomepage := "https://github.com/guangwenz/akka-down-resolver",
+  micrositeGithubOwner := "guangwenz",
+  micrositeGithubRepo := "akka-down-resolver",
+  //  micrositeExtraMdFiles := Map(file("CONTRIBUTING.md") -> microsites.ExtraMdFileConfig("contributing.md", "contributing")),
+  micrositePalette := Map(
+    "brand-primary" -> "#5B5988",
+    "brand-secondary" -> "#292E53",
+    "brand-tertiary" -> "#222749",
+    "gray-dark" -> "#49494B",
+    "gray" -> "#7B7B7E",
+    "gray-light" -> "#E5E5E6",
+    "gray-lighter" -> "#F4F3F4",
+    "white-color" -> "#FFFFFF"),
+  autoAPIMappings := true,
+  ghpagesNoJekyll := false,
+  fork in tut := true,
+  includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.swf" | "*.yml" | "*.md"
+)
+lazy val docs = (project in file("docs"))
+  .settings(moduleName := "docs")
+  .settings(micrositeSettings: _*)
+  .settings(noPublishSettings: _*)
+  .settings(Seq(
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion),
+    //    buildInfoPackage := "microsites"
+  ): _*)
+  .enablePlugins(MicrositesPlugin, GhpagesPlugin, BuildInfoPlugin)
