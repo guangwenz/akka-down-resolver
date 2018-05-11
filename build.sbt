@@ -63,7 +63,7 @@ lazy val micrositeSettings = Seq(
   micrositeName := "Akka Split Brain Resolver",
   micrositeDescription := "Akka Split Brain Resolver",
   micrositeAuthor := "Guangwen Zhou",
-  //  micrositeHighlightTheme := "atom-one-light",
+  micrositeHighlightTheme := "atom-one-light",
   micrositeHomepage := "https://github.com/guangwenz/akka-down-resolver",
   micrositeGithubOwner := "guangwenz",
   micrositeGithubRepo := "akka-down-resolver",
@@ -79,7 +79,9 @@ lazy val micrositeSettings = Seq(
     "white-color" -> "#FFFFFF"),
   autoAPIMappings := true,
   ghpagesNoJekyll := false,
+  ghpagesBranch := "master",
   fork in tut := true,
+  git.remoteRepo := "git@github.com:guangwenz/akka-down-resolver.git",
   includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.swf" | "*.yml" | "*.md"
 )
 lazy val docs = (project in file("docs"))
