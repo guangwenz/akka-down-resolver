@@ -11,8 +11,8 @@ matrix:
   - scala: 2.12.6
     script: sbt "++$TRAVIS_SCALA_VERSION clean" "++$TRAVIS_SCALA_VERSION compile"
     after_success:
-      - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then bash
-        scripts/publishMicrosite.sh; fi
+    - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+      bash scripts/publishMicrosite.sh; fi
 env:
   global:
   - secure: JMK+26qs4KqiI8a+JKiaYiFzBMydIaB+IP8s/X6kADsHhAHN1NpPPfLEBweP91F+95LefLJmNy6IbSsbfiPl5LgF8yo6wfhmHV8ECDrAyLDOkQZX/lafIeCjOm7b9uT5/wN5zeECiStGqdwEj3lCTrc61wyirucNeDDvDGdUATQryLcIm3KVNWb29tQeRvY8Wjl1bVl4VW8RxS9aAo4TolUkrwBylYW2TtQBztQM7s1TqYDMYRymvcynoUqUJXCOMWY0swOsXYRBr/cXHwX1YAuf4bX82XY/hhgW6Glk3H+2an2znJxQjacI9++kpQS+zmjcWHrp7DP2NdA/kn++fLeba4rTcBLYVvcwrfTmOMSSEL35WYzSCN9UPnWM90sxuBRlLBpImCjmtLG9Z5JW93vPdQrUEDjpKw083vx/ZNtpyNzWs5QobdxDQDHGVJnXD+xY+YLP7n92NKpKc4v9o5wdmZb5plJYMEIeeaDObAqpw7ug3FnPqOsD42u722oUzwRv1kMtYHI/Kqpe2xAd7pHbdp5FLLbj7ZUtGKaBMhbnGm66fAnn/C2v84OGcJHnGhvWUlyxb/Jy4EEnKDLZg9QMbLGNaWosH8BIDrF6xVYuL7cqjCqkZ8ywfDUN7qmkT0z4KYDDR3V/N66Vv71c8ilSJdfYaOtYZM/Z1V/dvi4=
