@@ -79,7 +79,6 @@ lazy val micrositeSettings = Seq(
     "white-color" -> "#FFFFFF"),
   autoAPIMappings := true,
   ghpagesNoJekyll := false,
-  ghpagesBranch := "master",
   fork in tut := true,
   git.remoteRepo := "git@github.com:guangwenz/akka-down-resolver.git",
   includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.swf" | "*.yml" | "*.md"
