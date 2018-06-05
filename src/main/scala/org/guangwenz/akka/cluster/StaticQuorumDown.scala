@@ -82,7 +82,7 @@ class StaticQuorumDown(settings: StaticQuorumDown.StaticQuorumDowningSettings) e
         log.warning("downing unreachable nodes [state={}]", cluster.state)
         unreachable.map(_.address).foreach(cluster.down)
       } else if (isLeaderUp) {
-        log.debug("this node is not leader, doing nothing. [state={}]", cluster.state)
+        log.info("this node is not leader, doing nothing. [state={}]", cluster.state)
       } else {
         log.warning("no leader exists! downing unreachable nodes. [state={}]", cluster.state)
         unreachable.map(_.address).foreach(cluster.down)
@@ -106,11 +106,11 @@ class StaticQuorumDown(settings: StaticQuorumDown.StaticQuorumDowningSettings) e
     case Event(MemberUp(_), _) =>
       val upNodesSize = cluster.state.members.count(_.status == MemberStatus.Up)
       if (upNodesSize >= settings.quorumSize) {
-        log.debug("cluster is up and running with number of members {} >= minimum quorum size {}", upNodesSize, settings.quorumSize)
+        log.info("cluster is up and running with number of members {} >= minimum quorum size {}", upNodesSize, settings.quorumSize)
         goto(StaticQuorumDown.CLUSTER_UP)
       } else stay()
     case _ =>
-      log.debug("waiting for cluster up and reach to full convergence")
+      log.info("waiting for cluster up and reach to full convergence")
       stay()
   }
 
